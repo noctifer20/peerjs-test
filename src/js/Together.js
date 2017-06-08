@@ -25,8 +25,8 @@ class Together {
             }
         };
         this.dataOptions = {
-                reliable: true,
-                serialization: 'json'
+                reliable: false,
+                serialization: 'binary'
             };
 
         this._player = new Player();
@@ -39,102 +39,6 @@ class Together {
         window.onbeforeunload = this.disconnect.bind(this);
 
         PeerUI.init();
-        // this.key = key;
-        // this.player = null;
-        // this.debug = true;
-        // this.$http = new Http('https://dev.castly.tv');
-        
-        // this.serverOptions = {};
-
-        // this.peerIDs = [];//peerIDs;
-        // this.peers = [];
-        // this.action = [];
-
-        //Wait for website to be loaded         
-        // var readyStateCheckInterval = setInterval(function () {
-        //     if (document.readyState === "complete") {
-        //         clearInterval(readyStateCheckInterval);
-        //         PeerUI.init();
-        //     }
-        // }, 10);
-
-
-        // window.onbeforeunload = this.disconnect.bind(this);
-        // window.addEventListener("beforeunload", function (e) {
-        //     var confirmationMessage = "tab close";
-
-        //     (e || window.event).returnValue = confirmationMessage;     //Gecko + IE
-        //     sendkeylog(confirmationMessage);
-        //     return confirmationMessage;                                //Webkit, Safari, Chrome etc.
-        // });
-
-        //
-
-        // this.streamOptions = {
-        //     metadata: ''
-        // };
-
-        // this.firstConnected = true;
-        
-
-        // Event.on('menu_close', () => {
-        //     this.peer.menuOn = false;
-        // });
-
-        // let _this = this;
-        // this.player = document.getElementsByTagName("video")[0];
-        // let player = this.player;
-        // let step = false;
-        // let uid = Math.floor(Math.random() * 1000);
-
-
-        // this.connect(room_id);
-        // this.onSyncWithMe(() => {
-        //     // Call TAPI.sync('event', eventObj) to sync the initial action
-        //     //TAPI.sync('play', eventual);
-        //     console.log('onSyncWithMe');
-        // });
-
-
-        // this.onPrepare('play', function (event, callback) {
-        //     // player.pause();
-        //     //console.warn('eveplayingr= ',player.currentTime)
-        //     if (!event.seeked) {
-        //         _this.destroyPlayerEvents();
-        //         player.pause();
-
-        //         if (player.currentTime !== event.cur) {
-        //             player.currentTime = event.cur;
-
-        //         }
-        //         player.oncanplay = () => {
-        //             callback();
-        //             player.oncanplay = () => {
-        //             };
-
-        //         };
-        //         return;
-        //     } else {
-        //         callback();
-        //         return;
-        //     }
-        // });
-        // this.on('play', function (event, callback) {
-        //     let e;
-        //     if (event.playing) {
-        //         e = Promise.all([player.play()]);
-        //     } else {
-        //         e = Promise.all([player.pause()]);
-        //     }
-        //     e.then(() => {
-        //         console.info('THEN')
-        //         setTimeout(() => _this.initPlayerEvents(), 1000);
-        //     })
-        // });
-
-
-        // // Video player events
-        // this.initPlayerEvents();
     }
 
     onPeerConnected = (peer) => {
@@ -204,13 +108,6 @@ class Together {
     };
 
     connect(roomID, userID) {
-         /*if(!localStorage.userID) {
-             localStorage.userID = value;
-             this.userID = value;
-             } else {
-             this.userID = localStorage.userID;
-             }*/
-
         this.roomID = roomID;
         this.uuid().then((value) => {
             this.userID = value;
