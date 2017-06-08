@@ -241,11 +241,11 @@ class Together {
       });
 
     });
-    this.peer.on('connection', (conn) => {
-      console.trace('RECEIVING PEER CONNECTION');
-
-      this.setupConnections(conn);
-    });
+    // this.peer.on('connection', (conn) => {
+    //   console.trace('RECEIVING PEER CONNECTION');
+    //
+    //   this.setupConnections(conn);
+    // });
     this.peer.on('call', this.setupCall);
 
     this.peer.on('error', err => console.error(err));
