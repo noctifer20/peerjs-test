@@ -19,8 +19,8 @@ class PeerConnection {
     this.setupConnection(conn, callback); //true for joining the room and not answering
 
     // Call a peer, providing our mediaStream
-    var call = this.peer.call(this.id, this.peer.stream, this.StreamOptions)
-    this.setupCall(call);
+    // var call = this.peer.call(this.id, this.peer.stream, this.StreamOptions)
+    // this.setupCall(call);
   }
 
   get getID() {
