@@ -1,0 +1,228 @@
+body > * {
+    transition: filter 0.5s;
+}
+body.blur > *:not(.ui-dialog), body.blur #mediaItemPlayer * {
+
+    filter: blur(10px);
+}
+.ui-dialog, .ui-dialog * {
+    filter:none !important;
+}
+.castly-btn-container {
+    position: absolute;
+    top:50px;
+}
+
+.castly-btn-container:hover .castly-btn-secondary {
+    transform: scale(1);
+    margin-left: 10px;
+    opacity: 1;
+}
+.castly-btn-container:hover .castly-btn-tertiary {
+    transform: scale(1);
+    margin-left: 10px;
+    opacity: 1;
+}
+.castly-btn-container:hover .castly-btn-quaternary {
+    transform: scale(1);
+    margin-left: 10px;
+    opacity: 1;
+}
+@font-face {
+    font-family: 'Glyphter';
+    src: url('https://castly.tv/css/fonts/Glyphter.eot');
+    src: url('https://castly.tv/css/fonts/Glyphter.eot?#iefix') format('embedded-opentype'),
+    url('https://castly.tv/css/fonts/Glyphter.woff') format('woff'),
+    url('https://castly.tv/css/fonts/Glyphter.ttf') format('truetype'),
+    url('https://castly.tv/css/fonts/Glyphter.svg#Glyphter') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+[class*='cicon-']:before{
+    display: inline-block;
+    font-family: 'Glyphter';
+    font-style: normal;
+    font-weight: normal;
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale
+}
+.cicon-optimised:before{content:'\0042';}
+.cicon-add-contact:before{content:'\0043';}
+.cicon-end-call:before{content:'\0045';}
+.cicon-info:before{content:'\0049';}
+.castly-btn {
+    box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.4);
+    -webkit-transition: all 450ms cubic-bezier(0.23, 1, 0.32, 1);
+    -moz-transition: all 450ms cubic-bezier(0.23, 1, 0.32, 1);
+    transition: all 450ms cubic-bezier(0.23, 1, 0.32, 1);
+    background: transparent;
+    border-radius: 50%;
+    border: 1px solid white;
+    width: 45px;
+    height: 45px;
+    cursor: pointer;
+    position: relative;
+}
+.castly-btn:hover {
+    background-color: white;
+}
+.castly-btn > div{
+    -webkit-transition: all 450ms cubic-bezier(0.23, 1, 0.32, 1);
+    -moz-transition: all 450ms cubic-bezier(0.23, 1, 0.32, 1);
+    transition: all 450ms cubic-bezier(0.23, 1, 0.32, 1);
+    position: absolute;
+    top:50%;
+    left:50%;
+    transform: translate(-50%,-50%);
+}
+.castly-btn:hover > div{
+    color: black;
+}
+.castly-btn-primary {
+    float: left;
+    z-index: 3;
+    box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.4);
+}
+.castly-btn-primary > div{
+    -webkit-transform: translate(-50%,-50%) rotateZ(0deg);
+    -moz-transform: translate(-50%,-50%) rotateZ(0deg);
+    -ms-transform: translate(-50%,-50%) rotateZ(0deg);
+    -o-transform: translate(-50%,-50%) rotateZ(0deg);
+    transform: translate(-50%,-50%) rotateZ(0deg);
+    width: 30px;
+    height: 30px;
+    font-size:30px;
+}
+.castly-btn-primary:hover > div{
+    -webkit-transform: translate(-50%,-50%) rotateZ(720deg);
+    -moz-transform: translate(-50%,-50%) rotateZ(720deg);
+    -ms-transform: translate(-50%,-50%) rotateZ(720deg);
+    -o-transform: translate(-50%,-50%) rotateZ(720deg);
+    transform: translate(-50%,-50%) rotateZ(720deg);
+}
+.castly-sub-button{
+    width: 35px;
+    height: 35px;
+    float: left;
+    transform:scale(0.4);
+    margin-left: -40px;
+    z-index: 2;
+    opacity: 0;
+    margin-top:5px;
+}
+.castly-sub-button > div{
+    width: 20px;
+    height: 20px;
+    font-size: 20px;
+}
+
+
+.ui-dialog.ui-corner-all.ui-widget.ui-widget-content.ui-front.ui-dialog-buttons {
+    background: #f4f4f4;
+    border-radius: 8px;
+    padding: 10px 10px 10px 25px;
+    filter: none !important;
+}
+
+.ui-dialog-title {
+    color: #4a4a4a;
+    font-size: 21px;
+    font-weight: 400;
+    -webkit-font-smoothing: antialiased;
+
+}
+.ui-dialog .ui-dialog-titlebar-close {
+    color: #4a4a4a;
+    background: transparent;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+    position: absolute;
+    top: 0!important;
+    right: 0!important;
+    width: auto!important;
+    height: auto!important;
+    margin: 0 !important;
+    padding: 0 !important;
+}
+.ui-dialog-content span {
+    color: #4a4a4a;
+}
+
+.ui-dialog .ui-dialog-buttonpane {
+    padding: 0 !important;
+}
+.ui-dialog .ui-dialog-buttonpane button{
+    background: #4adc2f;
+    border: none;
+    border-radius: 2px;
+    font-size: 16px;
+    -webkit-font-smoothing: antialiased;
+    color: white;
+    padding: 9px 15px 9px 15px;
+    margin:none;
+}
+#copy-text {
+    margin: 0 0px 5px 0px;
+    display: block;
+    font-size: 14px;
+    white-space: nowrap;
+    -webkit-font-smoothing: antialiased;
+}
+#copy-input {
+    width: 440px;
+    height: 27px;
+    border: 1px solid #d4d4d4;
+    border-radius: 5px;
+    padding-left: 5px;
+}
+
+
+dfn {
+    cursor: pointer;
+    display: block;
+    width: 100%;
+    height:100%;
+    font-style: normal;
+    position: relative;
+
+}
+.dfn::after {
+    content: attr(data-info);
+    display: inline;
+    position: absolute;
+    top: 30px;
+    left: 0;
+    opacity: 0;
+    font-size: 13px;
+    font-weight: 700;
+    line-height: 1.5em;
+    padding: 0.5em 0.8em;
+    background: rgba(0,0,0,0.65);
+    color: #fff;
+    pointer-events: none; /* This prevents the box from apearing when hovered. */
+    transition: opacity 250ms, top 250ms;
+    transform: translateX(-50%);
+    margin-left: 17.5px;
+    width: auto;
+    white-space: nowrap;
+}
+.dfn::before {
+    content: '';
+    display: block;
+    position: absolute;
+    top: 12px;
+    left: 50%;
+    transform: translateX(-50%);
+    opacity: 0;
+    width: 0; height: 0;
+    border: solid transparent 5px;
+    border-bottom-color: rgba(0, 0, 0, 0.65);
+    transition: opacity 250ms, top 250ms;
+}
+.dfn:hover {z-index: 2;} /* Keeps the info boxes on top of other elements */
+.dfn:hover::after,
+.dfn:hover::before {opacity: 1;}
+.dfn:hover::after {top: 45px;}
+.dfn:hover::before {top: 35px;}

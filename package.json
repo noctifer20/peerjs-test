@@ -1,0 +1,55 @@
+{
+  "name": "castly-extension",
+  "version": "1.0.0",
+  "description": "togetherJS module owned by Castly.tv, allows to connect through videochat and sync video player. The module is abstracted such that it can be used in other spheres of internet.",
+  "main": "together.js",
+  "dependencies": {},
+  "devDependencies": {
+    "babel-cli": "^6.11.4",
+    "babel-core": "^6.13.2",
+    "babel-loader": "6.2.4",
+    "babel-plugin-transform-decorators-legacy": "^1.3.4",
+    "babel-preset-es2015": "^6.13.2",
+    "babel-preset-es2016": "^6.16.0",
+    "babel-preset-es2017": "^6.16.0",
+    "babel-preset-stage-0": "6.5.0",
+    "base64-inline-loader": "^1.1.0",
+    "css-loader": "^0.28.1",
+    "file-loader": "^0.11.1",
+    "gulp": "^3.9.1",
+    "gulp-babel": "^6.1.2",
+    "gulp-concat": "^2.6.0",
+    "gulp-es6-transpiler": "^1.0.1",
+    "gulp-exit": "",
+    "gulp-jshint": "^2.0.1",
+    "gulp-sourcemaps": "^2.6.0",
+    "gulp-uglify": "^2.0.0",
+    "gulp-util": "^3.0.7",
+    "jquery": "^3.2.1",
+    "jquery-ui": "^1.12.1",
+    "jshint": "^2.9.3",
+    "less": "^2.7.2",
+    "less-loader": "^4.0.3",
+    "peerjs": "^0.3.14",
+    "style-loader": "^0.17.0",
+    "url-loader": "^0.5.8",
+    "webpack": "^2.4.1",
+    "webpack-dev-server": "^2.4.5",
+    "webrtc-adapter": "^3.3.2"
+  },
+  "scripts": {
+    "test": "gulp test",
+    "start": "node ./node_modules/webpack-dev-server/bin/webpack-dev-server.js --hot",
+    "build": "NODE_ENV=production webpack -p --progress"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/davidbuniat/castly-extension.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/davidbuniat/castly-extension/issues"
+  },
+  "homepage": "https://github.com/davidbuniat/castly-extension#readme"
+}
