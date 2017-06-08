@@ -221,7 +221,7 @@ class Together {
       //key: 'bub9icufkr19k9',
       debug: this.debug ? 3 : 0,
       secure: true,//this.debug? false:true,
-      config: value.stunTurnConfig,
+      // config: value.stunTurnConfig,
       host: value.host.host,
       port: value.host.port,
       path: value.host.path,
@@ -229,8 +229,8 @@ class Together {
     this.peer.stream = value.stream;
 
 
-    this.peer.on('open', () => {
-      console.trace('CONNECTED TO PEER.JS SERVER');
+    this.peer.on('open', (id) => {
+      console.trace('CONNECTED TO PEER.JS SERVER', id);
 
       this.connectToPeers();
 

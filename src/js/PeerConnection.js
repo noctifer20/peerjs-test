@@ -15,7 +15,7 @@ class PeerConnection {
 
   connectTo(callback) {
     if (this.debug) console.log('connecting with ' + this.id + '...');
-    const conn = this.peer.connect(this.id);
+    const conn = this.peer.connect(this.id.toString());
     this.setupConnection(conn, callback); //true for joining the room and not answering
 
     // Call a peer, providing our mediaStream
