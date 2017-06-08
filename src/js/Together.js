@@ -241,11 +241,11 @@ class Together {
       });
 
     });
-    // this.peer.on('connection', (conn) => {
-    //   console.trace('RECEIVING PEER CONNECTION');
-    //
-    //   this.setupConnections(conn);
-    // });
+    this.peer.on('connection', (conn) => {
+      console.trace('RECEIVING PEER CONNECTION');
+
+      this.setupConnections(conn);
+    });
     this.peer.on('call', this.setupCall);
 
     this.peer.on('error', err => console.error(err));
@@ -258,7 +258,7 @@ class Together {
     }
 
     this.peers[conn.peer].setupConnection(conn, () => {
-      this.onPeerConnected(this.peers[conn.peer]);
+      // this.onPeerConnected(this.peers[conn.peer]);
     });
   }
 
@@ -275,7 +275,7 @@ class Together {
 
         this.peers[id] = p;
         // this.syncMe.bind(this)(id);
-        this.onConnectedToPeer(p);
+        // this.onConnectedToPeer(p);
 
       });
     })
