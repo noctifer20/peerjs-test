@@ -13,40 +13,43 @@ class PeerConnection {
     this.peersProps = peersProps;
   }
 
-  connectTo(callback) {
+  connectTo() {
     if (this.debug) console.log('connecting with ' + this.id + '...');
     const conn = this.peer.connect(this.id.toString());
-    this.setupConnection(conn, callback); //true for joining the room and not answering
+    const call = this.peer.call(this.id, this.peer.stream, this.StreamOptions);
+    return Promise.all([
+      this.setupConnection(conn),
+      this.setupCall(call),
+    ]);
 
-    // Call a peer, providing our mediaStream
-    var call = this.peer.call(this.id, this.peer.stream, this.StreamOptions)
-    this.setupCall(call);
   }
 
   get getID() {
     return this.id;
   }
 
-  setupConnection(conn, callback) {
-    //Understand Data Passing
-    this.conn = conn;
-    this.conn
-      .on('open', () => {
-        console.warn(`CONNECTION WITH PEER ${this.id} ESTABLISHED`);
-        callback();
-      })
-      .on('data', (command) => {
-        //data.receiveTime = Date.now();
-        command.sender = this;
-        Event.fire('command', command);
-      })
-      .on('close', () => {
-        this.conn.close();
-        this.destroy();
-      })
-      .on('error', (err) => {
-        console.error('Connection error', err);
-      });
+  setupConnection(conn) {
+    return new Promise((resolve, reject) => {
+      this.conn = conn;
+      this.conn
+        .on('open', () => {
+          console.warn(`CONNECTION WITH PEER ${this.id} ESTABLISHED`);
+          return resolve();
+        })
+        .on('data', (command) => {
+          //data.receiveTime = Date.now();
+          command.sender = this;
+          Event.fire('command', command);
+        })
+        .on('close', () => {
+          this.conn.close();
+          this.destroy();
+        })
+        .on('error', (err) => {
+          console.error('Connection error', err);
+          return reject(err);
+        });
+    });
   }
 
   send(eventName, data = {}) {
@@ -100,26 +103,31 @@ class PeerConnection {
   }
 
   setupCall(call) {
-    this.call = call;
-    // Wait for stream on the call, then set peer video display
-    this.call.on('stream', (stream) => {
-      // Add new user to the UI
-      var myPeer = {
-        id: this.id,
-        stream: stream,
-      }
-      this.UI = new PeerUI(myPeer, {scale: 128, self: false}, this.peersProps);
-      if (this.peer.menuOn) {
-        this.UI.goToMenu();
-      }
-    });
+    return new Promise((resolve, reject) => {
+      this.call = call;
+      // Wait for stream on the call, then set peer video display
+      this.call.on('stream', (stream) => {
+        // Add new user to the UI
+        const myPeer = {
+          id: this.id,
+          stream: stream,
+        };
+        this.UI = new PeerUI(myPeer, {scale: 128, self: false}, this.peersProps);
 
-    this.call.on('close', () => {
-      this.call.close();
-      this.destroy();
-    });
-    this.call.on('error', () => {
-      console.error('Call Error');
+        if (this.peer.menuOn) {
+          this.UI.goToMenu();
+        }
+        return resolve();
+      });
+
+      this.call.on('close', () => {
+        this.call.close();
+        this.destroy();
+      });
+      this.call.on('error', (err) => {
+        console.error('Call Error');
+        reject(err);
+      });
     });
   }
 }

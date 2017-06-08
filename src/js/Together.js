@@ -29,7 +29,7 @@ class Together {
       serialization: 'binary'
     };
 
-    // this._player = new Player();
+    this._player = new Player();
     this.$http = new Http('https://dev.castly.tv');
 
     this.connect(room_id);
@@ -257,7 +257,7 @@ class Together {
       this.peers[conn.peer] = new PeerConnnection(conn.peer, this.peer, this.dataOptions, this.streamOptions, this.peersProps);
     }
 
-    this.peers[conn.peer].setupConnection(conn, () => {
+    this.peers[conn.peer].setupConnection(conn).then(() => {
       // this.onPeerConnected(this.peers[conn.peer]);
     });
   }
@@ -270,15 +270,14 @@ class Together {
     }).forEach((id) => {
       var p = new PeerConnnection(id, this.peer, this.dataOptions, this.streamOptions, this.peersProps);
 
-      p.connectTo(() => {
-        console.warn('CONNECTED TO PEER', id);
-
+      p.connectTo().then(() => {
         this.peers[id] = p;
         // this.syncMe.bind(this)(id);
         // this.onConnectedToPeer(p);
-
+      }).catch((err) => {
+        this.peerIDs.splice(p, 1);
       });
-    })
+    });
   }
 
   destroyPlayerEvents() {
